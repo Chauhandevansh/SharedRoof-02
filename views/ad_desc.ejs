@@ -1,0 +1,102 @@
+<%-include('./partial/header.ejs')-%>
+    <br><br><br><br>
+    <div>
+        <br><br>
+        <% items.forEach(function(image) { %>
+            <div class="container" style="height: auto;width: auto;">
+
+                <style>
+                    * {
+                        box-sizing: border-box;
+                    }
+                    
+                    .main {
+                        float: left;
+                        width: 45%;
+                        height: 850px;
+                        padding: 0 40px;
+                        overflow: hidden;
+                        padding-left: 150px;
+                        object-fit: cover;
+                    }
+                    
+                    .right {
+                        background-color: lightblue;
+                        float: left;
+                        width: 40%;
+                        padding: 5px 15px;
+                        margin-top: -110px;
+                        margin-left: 3px;
+                    }
+                    
+                    @media only screen and (max-width:800px) {
+                        /* For tablets: */
+                        .main {
+                            width: 80%;
+                            padding: 0;
+                        }
+                        .right {
+                            width: 100%;
+                            margin-top: 20px;
+                        }
+                    }
+                    
+                    @media only screen and (max-width:500px) {
+                        /* For mobile phones: */
+                        .main,
+                        .right {
+                            width: 100%;
+                            margin-left: 5px;
+                        }
+                    }
+                </style>
+                <div style="overflow:auto">
+
+                    <div class="main">
+                        <div style="margin-left: 20px;">
+                            <img src="data:image/<%=image.img.contentType%>;base64,<%=image.img.data.toString('base64')%>" style="width:90%">
+                        </div>
+                        <h3>Pricing per month:</h3>
+                        <div style="font-size: large;">
+
+                            Total Accomodations:
+                            <%= image.ttl_accom %>&nbsp;&nbsp;&nbsp; &nbsp;Available:
+                                <%= image.vcnt_accom %>
+                                    <div>
+                                        <h2>Amenities:</h2>
+                                        <p>Wi-fi:
+                                            <%= image.wifi %> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; Parking:
+                                                <%= image.parking %>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Balcony:
+                                                    <%= image.balcony %>
+                                        </p>
+                                        <p>AC:
+                                            <%= image.ac %> &nbsp; &nbsp;&nbsp; Nearby Metro:
+                                                <%= image.metro %>
+                                        </p>
+                                    </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 90px;"><br>
+                        <div class="right">
+                            <h1 style="background-color: black; color: white;">Accomodation Details</h1>
+                            <h2>Accomodation for:
+                                <%= image.gender %>
+                            </h2>
+                            <h2>Location:</h2>
+                            &nbsp;&nbsp;&nbsp;&nbsp;STATE :
+                            <%= image.state %> <br> DISTRICT :
+                                <%= image.district %>
+                                    <br> PINCODE :
+                                    <%= image.pincode %>
+                                        <br> ADDRESS :
+                                        <br><textarea rows="8" style="overflow: hidden; word-wrap: break-word; width: 100%; " placeholder="House no./street/Road/Colony/Area/"><%= image.address %></textarea> LANDMARK:
+                                        <br><textarea rows="5" style="overflow: hidden; word-wrap: break-word; width: 100%; " placeholder="e1/101hilecilwebvewilurve4wbverivrlbvrbvirbvlifbvrbvruvbrvbuovb "><%= image.landmark %></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <% }) %>
+    </div>
+    <%-include('./partial/footer.ejs')-%>

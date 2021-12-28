@@ -1,0 +1,29 @@
+<%-include('./partial/header.ejs')-%>
+    <br><br>
+
+    <h1>Advertisements</h1>
+
+    <div>
+        <% items.forEach(function(image) { %>
+            <div class="container" style="height: auto;width: auto;">
+
+
+                <div>
+
+                    <div class="img__wrap" style="Text-align:center;float:left; background-color: rgb(255, 255, 255); height: 250px;border-radius: 10px; padding:10px;">
+
+                        <img class="img__img" src="data:image/<%=image.img.contentType%>;base64,
+                        <%=image.img.data.toString('base64')%>" height="%" width="100%">
+
+                        <a class="img__description" href="/test?id=<%= image._id %>" id="adid">Show More</a>
+                        <p class="name_desc">
+                            <%= image.town %>,
+                                <%= image.name %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <% }) %>
+    </div>
+    <%-include('./partial/footer.ejs')-%>
